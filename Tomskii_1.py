@@ -14,7 +14,7 @@ def parse(link, page, header):
     print(page.status_code)  # смотрим ответ
     soup = BeautifulSoup(page.text, "html.parser")  # передаем страницу в bs4
 
-    products = soup.find('div', class_='app-products-list').findAll("article")  # находим все книги на странице
+    products = soup.find('div', class_='app-products-list').find_all("article")  # находим все книги на странице
     for product in products:  # проходим циклом по содержимому контейнера
         title = product.attrs["data-chg-product-name"]  # название
         if product.find("span", class_="product-card__subtitle") is not None:
@@ -35,7 +35,7 @@ print(page.status_code)  # смотрим ответ
 soup = BeautifulSoup(page.text, "html.parser")  # передаем страницу в bs4
 
 if soup.find("div", "chg-app-pagination") is not None:
-    last_page = soup.findAll("a", class_="chg-app-pagination__item")[-1].text
+    last_page = soup.find_all("a", class_="chg-app-pagination__item")[-1].text
 else:
     last_page = 1
 
