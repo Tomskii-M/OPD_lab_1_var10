@@ -4,11 +4,11 @@ import fake_useragent  # импортируем библиотеку fake_userag
 import pandas  # импортируем библиотеку pandas
 
 
-def parse(link, page, header):
+def parse(link, number, header):
     """title, author, price"""
     title, author, price = "", "", ""
     global sheet
-    url = f'{link}&page={page}'  # передаем необходимы URL адрес
+    url = f'{link}&page={number}'  # передаем необходимы URL адрес
 
     page = requests.get(url, headers=header)  # отправляем запрос методом Get
     print(page.status_code)  # смотрим ответ
